@@ -1,0 +1,76 @@
+<section data-label="<?=$page->header?>">
+	<div class="feed">
+	<?if(MOBILE): $first=array_shift($feed)?>
+		<div class="snippet">
+			<a href="/<?=$first['entity']?>">
+				<img src="<?=$first['landscape']?>" alt="<?=$first['header']?>">
+				<div>
+					<div class="caption"><span><?=$first['header']?></span></div>
+					<div class="description"><span><?=$first['description']?></span></div>
+				</div>
+			</a>
+		</div>
+	<?endif;
+	foreach($feed as $snippet):?>
+		<div class="snippet">
+			<a href="/<?=$snippet['entity']?>">
+				<img src="<?=$snippet['portrait']?>" alt="<?=$snippet['header']?>">
+				<div>
+					<div class="caption"><span><?=$snippet['header']?></span></div>
+					<div class="description"><span><?=$snippet['description']?></span></div>
+				</div>
+			</a>
+		</div>
+	<?endforeach?>
+	</div>
+	<?if(MOBILE):?>
+	<section class="box">
+		<button onmousedown="this.parentNode.classList.remove('showed')">✕</button>
+		<form class="slide-bar">
+			<input type="radio" name="slidebar" hidden><span></span>
+			<?foreach($feed as $i=>$itm):?>
+			<input type="radio" name="slidebar" hidden><span></span>
+			<?endforeach?>
+		</form>
+		<article class="landscape" data-id="<?=$first['PageID']?>" data-fill="NO">
+			<header>
+				<figure><img src="<?=$first['landscape']?>" alt="<?=$first['header']?>"></figure>
+				<section>
+					<h1><?=$first['header']?></h1>
+					<h2><?=$first['description']?></h2>
+				</section>
+			</header>
+		</article>
+		<?foreach($feed as $snippet):?>
+		<article class="default" data-id="<?=$snippet['PageID']?>" data-fill="NO">
+			<header>
+				<figure><img src="<?=$snippet['portrait']?>" alt="<?=$snippet['header']?>"></figure>
+				<section>
+					<h1><?=$snippet['header']?></h1>
+					<h2><?=$snippet['description']?></h2>
+				</section>
+			</header>
+		</article>
+		<?endforeach?>
+		<script>
+		/*
+		document.currentScript.parentNode.addEventListener("touchstart", function(event){
+			event.cancelBubble=true;
+			frameSpinner(this,{
+				x:0,
+				y:0,
+				EndX:0,
+				EndY:0,
+				StartX:event.touches[0].clientX,
+				StartY:event.touches[0].clientY
+			});
+		});
+		*/
+		document.currentScript.parentNode.addEventListener("scroll", function(event){
+			frameScroll(this);
+		});
+		</script>
+	</section>
+	<script>popupOpener(document.currentScript.parentNode)</script>
+	<?endif?>
+</section>

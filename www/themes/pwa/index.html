@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<?include_once("themes/".THEME."/components/head.html")?>
+</head>
+<body>
+	<?if(MOBILE):?>
+	<img src="/themes/<?=THEME?>/images/brushstroke-820x290.png">
+	<div id="chord"><hr><hr><hr></div>
+	<?else:?>
+	<img src="/themes/<?=THEME?>/images/brushstroke-1380x500.png">
+	<?endif?>
+	<input id="menu-shower" type="checkbox" hidden autocomplete="off">
+	<aside>
+		<label for="menu-shower">✕</label>
+		<nav>
+		<?foreach($keywords as $keyword):?>
+			<a href="/<?=$keyword?>"><?=str_replace("-"," ",$keyword)?></a>
+		<?endforeach?>
+		</nav>
+	</aside>
+	<input id="datepicker" type="checkbox" hidden autocomplete="off">
+	<aside>
+		<label for="datepicker">✕</label>
+		<nav id="picker">
+			<div><?=($date[1])?></div>
+			<?for($day=$date[0];($date[0]--)-1;):?>
+			<a href="/day/<?=implode("-",$date)?>"><?=$date[0]?></a>
+			<?endfor;
+			if($day<16):
+			$date = date("j-F-Y", $today - ($day * 86400 + 86400));
+			$date = explode("-",$date)?>
+			<div><?=$date[1]?></div>
+			<?for(; $date[0]>15; $date[0]--):?>
+			<a href="/day/<?=implode("-",$date)?>"><?=$date[0]?></a>
+			<?endfor; endif?>
+		</nav>
+	</aside>
+	<section id="cover">
+		<a href="/"><img src="/themes/<?=THEME?>/images/logo-640x336.png" width="200"></a>
+		<div id="bar">
+			<label for="datepicker"></label>
+			<label for="menu-shower"></label>
+			<script>
+			(function(bar){
+				document.addEventListener('DOMContentLoaded', function(){
+					window.addEventListener("scroll",function(){
+						bar.classList.toggle("fixed", doc.currentScrollTop > 110);
+					});
+				});
+			})(document.currentScript.parentNode)
+			</script>
+		</div>
+	</section>
+	<main id="feed" class="today">
+		<?include_once("themes/".THEME."/includes/".$page->template.".html")?>
+	</main>
+	<section id="copyright">
+		<?if(MOBILE):?>
+		<img src="/themes/<?=THEME?>/images/brushstroke-820x290.png">
+		<img src="/themes/<?=THEME?>/images/copyright.png">
+		<?else:?>
+		<img src="/themes/<?=THEME?>/images/copyright.png">
+		<?endif?>
+		<span><?=CURRENT_YEAR?></span>
+	</section>
+</body>
+</html>

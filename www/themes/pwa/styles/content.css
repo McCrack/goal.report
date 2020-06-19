@@ -1,0 +1,279 @@
+article{
+	color:#111;
+	font:18px "open sans";
+}
+
+main#article>article>header{
+	margin-top:-20px;
+}
+article>header>figure{
+	font-size:0;
+	margin:0;
+}
+article>header>figure>img{
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+main#article>article>header>figure{
+	overflow:hidden;
+	border-radius:7px;
+	border:2px solid white;
+	background-color:black; 
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+article a{
+	color:#00ADF0;
+}
+a:hover{
+	color:gold;
+}
+
+article ol,ul{
+	padding-left:3vw;
+}
+article li{
+	color:#555;
+	margin:6px 0;
+	min-width:52%;
+	font-size:16px;
+}
+article hr{
+	height:1px;
+	border-width:0;
+	background-color:#AAA;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+@media (max-width:680px){
+	article{
+		width:100%;
+		box-sizing:border-box;
+	}
+	article>header{
+		font-size:0;
+		margin:0px -5vw;
+		position:relative;
+	}
+	header>figure{
+		margin:0px -5vw;
+	}
+	.default>header>section{
+		color:white;
+		left:0;
+		bottom:0;
+		width:100%;
+		position:absolute;
+		box-sizing:border-box;
+		padding:5px 5px 2vh 5px;
+		background-image:linear-gradient(to top, rgba(0,0,0, .6), rgba(0,0,0, 0));
+	}
+	header>section>h1{
+		font-size:10vw;
+	}
+	header>section>h2{
+		font-size:20px;
+	}
+	article>blockquote{
+		padding:4vh 20px;
+	}
+	.slideshow>figure>figcaption{
+		max-width:calc(100% - 80px);
+	}
+}
+@media (min-width:620px) AND (max-width:920px){
+	header>section>h1{
+		font-size:6vw;
+	}
+	header>section>h2{
+		font-size:4vw;
+	}
+}
+@media (min-width:921px){
+	main#article{
+		margin:0 auto;
+		max-width:1100px;
+		display:grid;
+		grid-gap:10px;
+		grid-template-columns:auto 300px;
+	}
+	header>section>h1{
+		font-size:2.5vw;
+	}
+	header>section>h2{
+		font-size:22px;
+	}
+}
+@media (min-width:681px){
+
+	.default>header{
+		display:flex;
+		align-items:center;
+		justify-content:center;
+	}
+	.default>header>section{
+		padding:0 4vw 2vh 4vw;
+	}
+	article>blockquote{
+		padding:5vh 0 5vh 3vw;
+	}
+	.slideshow>figure>figcaption{
+		left:20px;
+		max-width:400px;
+	}
+
+}
+header>section>h1{
+	line-height:1;
+	font-family:Oswald;
+	border-bottom:1px solid #CCC;
+}
+header>section>h1,
+header>section>h2{
+	margin:0;
+	padding:15px;
+}
+header>section>h1::first-letter{
+	color:#D94;
+}
+header>section>h2{
+	line-height:1.2;
+}
+article>h2{
+	font:bold 26px/1.1 Oswald;
+}
+article>blockquote{
+	margin:0;
+	font-style:italic;
+	background:url(/images/quotes.jpg) 10px 10px no-repeat;
+}
+
+article>figure{
+	font-size:0;
+	position:relative;
+}
+article>figure>figcaption{
+	color:#444;
+	font:16px Oswald;
+	text-align:center;
+}
+article>figure>figcaption>a{
+	color:#567;
+}
+article>figure>figcaption>a:hover{
+	color:#00ADF0;
+}
+
+/* VIDEO *****************************/
+
+.embed>iframe{
+	width:100%;
+}
+.embed>twitter-widget{
+	margin:20px auto;
+}
+.video{
+	position:relative;
+	padding-bottom:56.25%;
+}
+.video>video,
+.video>iframe{
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	position:absolute;
+}
+
+/* MEDIASET **************************/
+
+.mediaset{
+	font-size:0;
+
+	overflow:hidden;
+	position:relative;
+	white-space:nowrap;
+}
+.mediaset::after,
+.mediaset::before{
+	z-index:3;
+	color:white;
+	font-size:22px;
+	cursor:pointer;
+	position:absolute;
+	text-align:center;
+	border:1px solid #999;
+	background-color:rgba(0,0,0, .3);
+}
+.mediaset::before{
+	content:"←";
+	right:75px;
+	bottom:60px;
+	width:40px;
+	height:40px;
+	line-height:40px;
+}
+.mediaset::after{
+	content:"→";
+	right:10px;
+	bottom:10px;
+	width:60px;
+	height:60px;
+	line-height:60px;
+}
+.slideshow{
+	width:100%;
+	overflow-x:hidden;
+	background-color:black;
+}
+.slideshow>figure{
+	width:inherit;
+
+	position:relative;
+	vertical-align:middle;
+	white-space:normal;
+	display:inline-block;
+}
+.slideshow>figure>img{
+	width:inherit;
+	min-height:60vh;
+	max-height:98vh;
+	object-fit:contain;
+	background-color:black;
+}
+.slideshow>figure>figcaption{
+	z-index:2;
+	font-size:22px;
+	line-height:28px;
+	position:absolute;
+}
+.slideshow>figure>figcaption>span{
+	padding:0 8px;
+  	box-decoration-break:clone;
+  	-webkit-box-decoration-break:clone;
+}
+.slideshow>figure>figcaption.top{
+	top:8%;
+}
+.slideshow>figure>figcaption.bottom{
+	bottom:8%;
+}
+.slideshow>figure>figcaption.dark>span{
+	color:white;
+	background-color:black;
+}
+.slideshow>figure>figcaption.dark::first-letter{
+	color:gold;
+}
+.slideshow>figure>figcaption.light>span{
+	color:black;
+	background-color:white;
+}
+.slideshow>figure>figcaption.light::first-letter{
+	color:#00ADF0;
+}
+
+/*************************************/

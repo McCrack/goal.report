@@ -1,0 +1,37 @@
+<div>
+	<article class="landscape">
+		<header>
+			<figure>
+				<img src="<?=$page->landscape?>">
+			</figure>
+			<section>
+				<h1><?=$page->header?></h1>
+				<h2><?=$page->subheader?></h2>
+			</section>
+		</header>
+		<?=$page->getContent()?>
+		<br>
+		<hr>
+		<div id="fb-like" class="fb-like" data-href="https://www.facebook.com/goalsreports" data-layout="standard" data-action="like" data-show-faces="true" data-share="false" data-width="320px"></div>
+	</article>
+	<div class="social-btns right">
+		<a title="WatsApp" class="warsapp icons title" href="whatsapp://send?text=<?=$page->canonical?>"></a>
+		<span title="Facebook messenger" class="messenger icons title" onclick="send.messenger()"></span>
+		<span title="Facebook" class="facebook icons title" onclick="share.facebook()">
+		&#xf101; <span data-translate="textContent">share</span>
+		</span>
+	</div>
+</div>
+<aside id="feed">
+	<?foreach($feed as $snippet): if($snippet['PageID']==$page->PageID) continue?>
+	<div class="snippet">
+		<a href="/<?=$snippet['entity']?>">
+			<img src="<?=$snippet['portrait']?>" alt="<?=$snippet['header']?>">
+			<div>
+				<div class="caption"><span><?=$snippet['header']?></span></div>
+				<div class="description"><span><?=$snippet['description']?></span></div>
+			</div>
+		</a>
+	</div>
+	<?endforeach?>
+</aside>
